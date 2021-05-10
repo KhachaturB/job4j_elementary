@@ -9,13 +9,13 @@ public class Defragment {
                 for (int i = index + 1; i < array.length; i++) {
                     if (array[i] != null) {
                         notNullIndex = i;
+                        SwitchArray.swap(array, index, notNullIndex);
                         break;
                     }
                 }
                 if (notNullIndex == -1) {
                     break;
                 }
-                SwitchArray.swap(array, index, notNullIndex);
             }
             System.out.print(array[index] + " ");
         }
