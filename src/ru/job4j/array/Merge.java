@@ -9,13 +9,16 @@ public class Merge {
         for (int i = 0; i < rsl.length; i++) {
             if (rightIndex == right.length) {
                 rsl[i] = left[leftIndex++];
-            } else if (leftIndex == left.length) {
-                rsl[i] = right[rightIndex++];
-            } else if (left[leftIndex] < right[rightIndex]) {
-                rsl[i] = left[leftIndex++];
-            } else {
-                rsl[i] = right[rightIndex++];
+                continue;
             }
+            if (leftIndex == left.length) {
+                rsl[i] = right[rightIndex++];
+                continue;
+            }
+
+            rsl[i] = left[leftIndex] < right[rightIndex]
+                    ? left[leftIndex++]
+                    : right[rightIndex++];
         }
         return rsl;
     }
