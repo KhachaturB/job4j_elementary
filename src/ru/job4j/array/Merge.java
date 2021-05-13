@@ -7,18 +7,15 @@ public class Merge {
         int leftIndex = 0;
         int rightIndex = 0;
         for (int i = 0; i < rsl.length; i++) {
-            if (rightIndex == right.length) {
+            if (leftIndex != left.length && rightIndex != right.length) {
+                rsl[i] = left[leftIndex] < right[rightIndex]
+                        ? left[leftIndex++]
+                        : right[rightIndex++];
+            }  else if (leftIndex != left.length) {
                 rsl[i] = left[leftIndex++];
-                continue;
-            }
-            if (leftIndex == left.length) {
+            } else if (rightIndex != right.length) {
                 rsl[i] = right[rightIndex++];
-                continue;
             }
-
-            rsl[i] = left[leftIndex] < right[rightIndex]
-                    ? left[leftIndex++]
-                    : right[rightIndex++];
         }
         return rsl;
     }
